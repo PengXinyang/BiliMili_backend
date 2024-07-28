@@ -45,10 +45,12 @@ public interface UserService {
     ResponseResult getUserInfo(int uid);
     /**
      * 更新用户信息
-     * @param name 用户名称
+     *
+     * @param name        用户名称
      * @param description 个人介绍
+     * @param gender      性别
      */
-    ResponseResult updateUserInfo(int uid, String name, String description);
+    ResponseResult updateUserInfo(int uid, String name, String description, int gender);
     /**
      * 升级
      * @param uid 用户id

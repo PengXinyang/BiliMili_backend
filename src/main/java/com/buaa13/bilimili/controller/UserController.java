@@ -124,9 +124,10 @@ public class UserController {
     @PostMapping("user/update/information")
     public ResponseResult updateUserInformation(@RequestParam("uid") int uid,
                                                 @RequestParam("name") String name,
-                                                @RequestParam("description") String description){
+                                                @RequestParam("description") String description,
+                                                @RequestParam("gender") int gender){
         try{
-            return userService.updateUserInfo(uid,name,description);
+            return userService.updateUserInfo(uid,name,description, gender);
         }
         catch(Exception e){
             return new ResponseResult(500,"出现未知错误",null);

@@ -19,10 +19,14 @@ public class User {
     private String password;//密码
     private String name;//用户名
     private String description;//个性签名
+    private String head;//头像链接
+    private String backend;//背景图片链接
+    private int gender;//性别，女性0，男性1，无性别2，默认为2
     private int experience;//经验
     private int threshold;//经验阈值
     private int level;//等级
     private int state;//用户状态,0表示正常，1表示已删除
+    private int role;//角色权限，0表示普通用户，1表示管理员
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm", timezone = "Asia/Beijing")
     private Date createDate;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm", timezone = "Asia/Beijing")

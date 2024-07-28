@@ -62,6 +62,7 @@ public class UserServiceImpl implements UserService {
                 updateWrapper.eq("account", account);
                 updateWrapper.set("password", password);
                 updateWrapper.set("state", 0);
+                updateWrapper.set("role",0);
                 updateWrapper.set("create_date",new Date());
                 updateWrapper.set("delete_date",null);
                 userMapper.update(updateWrapper);
@@ -209,10 +210,13 @@ public class UserServiceImpl implements UserService {
         map.put("account",user.getAccount());
         map.put("name",user.getName());
         map.put("description",user.getDescription());
+        map.put("backend",user.getBackend());
+        map.put("gender",user.getGender());
         map.put("experience",user.getExperience());
         map.put("threshold",user.getThreshold());
         map.put("level",user.getLevel());
         map.put("state",user.getState());
+        map.put("role",user.getRole());
         map.put("createDate",user.getCreateDate());
         map.put("deleteDate",user.getDeleteDate());
         result.setData(map);
@@ -225,9 +229,10 @@ public class UserServiceImpl implements UserService {
      *
      * @param name        用户名称
      * @param description 个人介绍
+     * @param gender
      */
     @Override
-    public ResponseResult updateUserInfo(int uid, String name, String description) {
+    public ResponseResult updateUserInfo(int uid, String name, String description, int gender) {
         ResponseResult result = new ResponseResult();
         User user = userMapper.selectById(uid);
         if(user == null || user.getState() == 1){
@@ -239,6 +244,7 @@ public class UserServiceImpl implements UserService {
         updateWrapper.eq("uid", uid);
         updateWrapper.set("name", name);
         updateWrapper.set("description", description);
+        updateWrapper.set("gender",gender);
         userMapper.update(updateWrapper);
         result.setMessage("更新成功！");
         return result;
